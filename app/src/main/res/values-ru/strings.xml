@@ -3,4 +3,6 @@
     <string name="app_name">НМедиа</string>
     <string name="nmedia">НМедиа!</string>
     <string name="hello">Привет Мир!</string>
+    <string name="avatar">Аватар</string>
+    <string name="heart">Сердечко</string>
 </resources>

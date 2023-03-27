@@ -2,4 +2,9 @@
     <string name="app_name" translatable="false">NMedia</string>
     <string name="nmedia" translatable="false">NMedia!</string>
     <string name="hello">Hello, World!</string>
+    <string name="avatar">Avatar</string>
+    <string name="heart" translatable="false">Heart</string>
+    <string name="countLikes" translatable="false">10</string>
+    <string name="countReposts" translatable="false">5</string>
+    <string name="countViews" translatable="false">500K</string>
 </resources>
