@@ -33,6 +33,7 @@
 
     <ImageView
         android:id="@+id/avatar"
+        android:src="@drawable/ic_launcher_foreground"
         android:contentDescription="@string/avatar"
         android:layout_width="@dimen/posts_avatar_size"
         android:layout_height="@dimen/posts_avatar_size"
@@ -74,9 +75,10 @@
         android:layout_height="wrap_content"
         />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/heart"
-        android:src="@drawable/baseline_favorite_border_24"
+        android:src="@drawable/ic_heart_border_24"
+        android:background="@android:color/transparent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
@@ -88,10 +90,10 @@
         android:id="@+id/countLike"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginLeft="@dimen/indent_number"
+        app:layout_constraintBottom_toBottomOf="@+id/heart"
         app:layout_constraintStart_toEndOf="@+id/heart"
-        app:layout_constraintTop_toBottomOf="@+id/content"
+        app:layout_constraintTop_toTopOf="@+id/heart"
         tools:text="@string/countLikes" />
 
     <ImageView
@@ -100,8 +102,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginLeft="@dimen/indent_number"
-        android:contentDescription="@string/heart"
-        android:src="@drawable/baseline_polyline_24"
+        android:contentDescription="repost"
+        android:src="@drawable/ic_share_24"
         app:layout_constraintStart_toEndOf="@+id/countLike"
         app:layout_constraintTop_toBottomOf="@+id/content" />
 
@@ -109,10 +111,10 @@
         android:id="@+id/countRepost"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginLeft="@dimen/indent_number"
+        app:layout_constraintBottom_toBottomOf="@+id/repost"
         app:layout_constraintStart_toEndOf="@+id/repost"
-        app:layout_constraintTop_toBottomOf="@+id/content"
+        app:layout_constraintTop_toTopOf="@+id/repost"
         tools:text="@string/countReposts" />
 
     <ImageView
@@ -122,7 +124,7 @@
         android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginRight="@dimen/indent_number"
         android:contentDescription="@string/heart"
-        android:src="@drawable/baseline_remove_red_eye_24"
+        android:src="@drawable/ic_eye_24"
         app:layout_constraintEnd_toStartOf="@+id/countViews"
         app:layout_constraintTop_toBottomOf="@+id/content" />
 
@@ -130,9 +132,9 @@
         android:id="@+id/countViews"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_spacing"
+        app:layout_constraintBottom_toBottomOf="@+id/viewsContent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/content"
+        app:layout_constraintTop_toTopOf="@+id/viewsContent"
         tools:text="@string/countViews" />
 
 
