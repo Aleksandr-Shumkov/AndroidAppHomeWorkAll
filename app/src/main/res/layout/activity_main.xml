@@ -76,7 +76,7 @@
         />
 
     <ImageButton
-        android:id="@+id/heart"
+        android:id="@+id/like"
         android:src="@drawable/ic_heart_border_24"
         android:background="@android:color/transparent"
         android:layout_width="0dp"
@@ -91,9 +91,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/indent_number"
-        app:layout_constraintBottom_toBottomOf="@+id/heart"
-        app:layout_constraintStart_toEndOf="@+id/heart"
-        app:layout_constraintTop_toTopOf="@+id/heart"
+        app:layout_constraintBottom_toBottomOf="@+id/like"
+        app:layout_constraintStart_toEndOf="@+id/like"
+        app:layout_constraintTop_toTopOf="@+id/like"
         tools:text="@string/countLikes" />
 
     <ImageView
