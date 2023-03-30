@@ -5,10 +5,10 @@ data class Post (
     val author: String,
     val published: String,
     val content: String,
-    var countViews: Int = 1,
-    var countRepost: Int = 7_999,
-    var likedByMe: Boolean = false,
-    var likes: Int = 999
+    val countViews: Int = 1,
+    val countRepost: Int = 0,
+    val likedByMe: Boolean = false,
+    val likes: Int = 0
 ) {
     fun getNumberToString(number: Int): String {
 
