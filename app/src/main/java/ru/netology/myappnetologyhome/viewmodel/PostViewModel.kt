@@ -10,11 +10,11 @@ class PostViewModel: ViewModel() {
 
     private val repository: PostRepository = PostReposytoryInMemory()
 
-    val data: LiveData<Post> = repository.getData()
+    val data: LiveData<List<Post>> = repository.getData()
 
-    fun like() = repository.like()
+    fun likeById(id: Long) = repository.likeById(id)
 
-    fun repost() = repository.repost()
+    fun repostById(id: Long) = repository.repostById(id)
 
-    fun viewPost() = repository.viewPost()
+    fun viewPostById(id: Long) = repository.viewPostById(id)
 }

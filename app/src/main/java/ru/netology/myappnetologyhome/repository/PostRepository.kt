@@ -5,12 +5,12 @@ import ru.netology.myappnetologyhome.dto.Post
 
 interface PostRepository {
 
-    fun getData(): LiveData<Post>
+    fun getData(): LiveData<List<Post>>
 
-    fun like()
+    fun likeById(id: Long)
 
-    fun repost()
+    fun repostById(id: Long)
 
-    fun viewPost()
+    fun viewPostById(id: Long)
 
 }
