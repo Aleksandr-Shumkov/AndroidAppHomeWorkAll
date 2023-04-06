@@ -2,6 +2,7 @@ package ru.netology.myappnetologyhome.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import ru.netology.myappnetologyhome.R
@@ -40,18 +41,44 @@ class MainActivity : AppCompatActivity() {
                     viewModel.repostById(post.id)
                 }
 
-                override fun onCancel(post: Post) {
-                    viewModel.cancelEdit(post)
+                override fun onCancel() {
+                    viewModel.cancelEdit()
+                }
+
+                override fun onCreate(post: Post) {
+                    viewModel.createPost(post)
                 }
 
             }
         )
 
+        activityMainBinding.create.setOnClickListener {
+            with(activityMainBinding.content) {
+                visibilityControl(activityMainBinding, false)
+                activityMainBinding.content.requestFocus()
+                AndroidUtils.showKeyboard(this)
+            }
+        }
+
+        activityMainBinding.cancelEdit.setOnClickListener {
+            with(activityMainBinding.content) {
+                visibilityControl(activityMainBinding, true)
+                viewModel.cancelEdit()
+                setText("")
+                clearFocus()
+                AndroidUtils.hideKeyboard(this)
+            }
+
+        }
+
         viewModel.edited.observe(this) {
+
             if (it.id == 0L) {
+                activityMainBinding.cancelEdit.visibility = View.GONE
                 return@observe
             }
 
+            visibilityControl(activityMainBinding, false)
             activityMainBinding.content.requestFocus()
             activityMainBinding.content.setText(it.content)
         }
@@ -70,7 +97,7 @@ class MainActivity : AppCompatActivity() {
 
                 viewModel.changeContent(content)
                 viewModel.save()
-
+                visibilityControl(activityMainBinding, true)
                 setText("")
                 clearFocus()
                 AndroidUtils.hideKeyboard(this)
@@ -84,6 +111,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         activityMainBinding.list.adapter = adapter
+
+    }
+
+    fun visibilityControl(activityMainBinding: ActivityMainBinding, check: Boolean) {
+
+        if (check) {
+            activityMainBinding.groupEdit.visibility = View.GONE
+            activityMainBinding.create.visibility = View.VISIBLE
+        } else {
+            activityMainBinding.groupEdit.visibility = View.VISIBLE
+            activityMainBinding.create.visibility = View.GONE
+        }
 
     }
 }

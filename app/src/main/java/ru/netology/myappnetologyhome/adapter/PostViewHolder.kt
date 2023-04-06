@@ -50,6 +50,10 @@ class PostViewHolder(
                             listener.onEdit(post)
                             true
                         }
+                        R.id.create -> {
+                            listener.onCreate(post)
+                            true
+                        }
                         else -> false
                     }
 

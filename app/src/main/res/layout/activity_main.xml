@@ -21,7 +21,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="top"
-        app:constraint_referenced_ids="content,save" />
+        app:constraint_referenced_ids="content,save, cancelEdit" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="content, save, cancelEdit" />
 
     <ImageButton
         android:id="@+id/cancelEdit"
@@ -43,7 +50,7 @@
         android:background="@android:color/transparent"
         android:padding="@dimen/common_spacing"
         android:importantForAutofill="no"
-        app:layout_constraintTop_toTopOf="@id/cancelEdit"
+        app:layout_constraintTop_toTopOf="@id/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/save"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,4 +68,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:srcCompat="@drawable/ic_save_48"
         />
+
+    <ImageButton
+        android:id="@+id/create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/create_post"
+        android:background="@android:color/transparent"
+        android:title="@string/create_post"
+        app:layout_constraintBottom_toTopOf="@+id/cancelEdit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_add_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ interface PostListener {
     fun onRemove(post: Post)
     fun onEdit(post: Post)
     fun onRepost(post: Post)
-    fun onCancel(post: Post)
+    fun onCancel()
+    fun onCreate(post: Post)
 
 }

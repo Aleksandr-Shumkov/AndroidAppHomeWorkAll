@@ -27,10 +27,15 @@ class PostViewModel: ViewModel() {
     fun repostById(id: Long) = repository.repostById(id)
 
     fun viewPostById(id: Long) = repository.viewPostById(id)
+
     fun removePostById(id: Long) = repository.removePostById(id)
 
     fun edit(post: Post) {
         edited.value = post
+    }
+
+    fun createPost(post: Post) {
+
     }
 
     fun save() {
@@ -39,6 +44,7 @@ class PostViewModel: ViewModel() {
         }
         edited.value = empty
     }
+
     fun changeContent(content: String) {
         edited.value?.let {post ->
             if (content != post.content) {
@@ -47,7 +53,7 @@ class PostViewModel: ViewModel() {
         }
     }
 
-    fun cancelEdit(post: Post) {
-        edit(post)
+    fun cancelEdit() {
+        edited.value = empty
     }
 }

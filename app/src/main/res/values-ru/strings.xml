@@ -16,4 +16,5 @@
     <string name="description_post_save">Сохранить</string>
     <string name="description_post_author_name">Имя автора поста</string>
     <string name="description_post_view">Просмотрено</string>
+    <string name="create_post">Создать</string>
 </resources>
