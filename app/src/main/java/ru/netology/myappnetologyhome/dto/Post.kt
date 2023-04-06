@@ -15,7 +15,6 @@ data class Post (
         val countStr = number.toString().count() / 3.0
         val remDivisionK = (number / 1_000.0).toString().split(".")[1][0].toString().toInt()
         val remDivisionM = if(number > 1_000_000) (number / 1_000_000.0).toString().split(".")[1][0].toString().toString().toInt() else 0
-        //println("number $number")
 
         return when {
             0 < countStr && countStr <= 1 -> "$number"

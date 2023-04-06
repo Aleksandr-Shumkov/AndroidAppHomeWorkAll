@@ -14,8 +14,9 @@
         android:layout_marginHorizontal="@dimen/common_spacing"
         android:ellipsize="end"
         android:maxLines="1"
+        android:contentDescription="@string/description_post_author_name"
         app:layout_constraintBottom_toTopOf="@id/published"
-        app:layout_constraintEnd_toStartOf="@+id/publish_menu"
+        app:layout_constraintEnd_toStartOf="@+id/menu"
         app:layout_constraintStart_toEndOf="@+id/avatar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
@@ -34,7 +35,7 @@
     <ImageView
         android:id="@+id/avatar"
         android:src="@drawable/ic_launcher_foreground"
-        android:contentDescription="@string/avatar"
+        android:contentDescription="@string/description_post_author_avatar"
         android:layout_width="@dimen/posts_avatar_size"
         android:layout_height="@dimen/posts_avatar_size"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +43,8 @@
         tools:src="@sample/posts.json/data/authorAvatar" />
 
     <ImageButton
-        android:id="@+id/publish_menu"
+        android:id="@+id/menu"
+        android:contentDescription="@string/description_post_menu"
         android:background="@android:color/transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,7 +84,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
-        android:contentDescription="@string/heart"
+        android:contentDescription="@string/description_post_like"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/content" />
 
@@ -102,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginLeft="@dimen/indent_number"
-        android:contentDescription="repost"
+        android:contentDescription="@string/description_post_share"
         android:src="@drawable/ic_share_24"
         app:layout_constraintStart_toEndOf="@+id/countLike"
         app:layout_constraintTop_toBottomOf="@+id/content" />
@@ -123,7 +125,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginRight="@dimen/indent_number"
-        android:contentDescription="@string/heart"
+        android:contentDescription="@string/description_post_view"
         android:src="@drawable/ic_eye_24"
         app:layout_constraintEnd_toStartOf="@+id/countViews"
         app:layout_constraintTop_toBottomOf="@+id/content" />

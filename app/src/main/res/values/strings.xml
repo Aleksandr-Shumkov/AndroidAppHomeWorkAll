@@ -2,9 +2,25 @@
     <string name="app_name" translatable="false">NMedia</string>
     <string name="nmedia" translatable="false">NMedia!</string>
     <string name="hello">Hello, World!</string>
-    <string name="avatar">Avatar</string>
+
+    <string name="description_post_author_name">Post author name</string>
+    <string name="description_post_author_avatar">Post author avatar</string>
+    <string name="description_post_menu">Post menu</string>
+    <string name="description_post_like">Like</string>
+    <string name="description_post_share">Share</string>
+    <string name="description_post_save">Save</string>
+    <string name="description_post_view">View</string>
+    <string name="description_post_edit_cancel">Cancel</string>
+
+
+
     <string name="heart" translatable="false">Heart</string>
     <string name="countLikes" translatable="false">10</string>
     <string name="countReposts" translatable="false">5</string>
     <string name="countViews" translatable="false">500K</string>
+    <string name="description_post_remove">Remove</string>
+    <string name="post_text">Post Text</string>
+    <string name="menu_edit">Edit</string>
+    <string name="error_empty_content">Content can\'t be empty</string>
+    <string name="create_post">Create post</string>
 </resources>
