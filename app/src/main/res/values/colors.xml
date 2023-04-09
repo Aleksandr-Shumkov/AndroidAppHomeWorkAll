@@ -10,5 +10,6 @@
     <color name="liked">#AF1717</color>
     <color name="notLiked">#787878</color>
     <color name="button_text_color">#787878</color>
+    <color name="button_create_color">#4169E1</color>
     <color name="ic_launcher_background">#FFFFFF</color>
 </resources>

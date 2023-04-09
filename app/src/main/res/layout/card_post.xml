@@ -90,7 +90,7 @@
         android:layout_marginTop="@dimen/common_spacing"
         android:contentDescription="@string/description_post_like"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/content" />
+        app:layout_constraintTop_toBottomOf="@+id/bottomBarrierContent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/repost"
@@ -100,10 +100,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
-        android:layout_marginLeft="@dimen/indent_number"
+        android:layout_marginStart="@dimen/indent_number"
         android:contentDescription="@string/description_post_share"
         app:layout_constraintStart_toEndOf="@+id/like"
-        app:layout_constraintTop_toBottomOf="@+id/content" />
+        app:layout_constraintTop_toBottomOf="@+id/bottomBarrierContent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/viewsContent"
@@ -113,10 +113,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_spacing"
-        android:layout_marginRight="@dimen/indent_number"
+        android:layout_marginEnd="@dimen/indent_number"
         android:contentDescription="@string/description_post_view"
-        app:layout_constraintEnd_toEndOf="@+id/content"
-        app:layout_constraintTop_toBottomOf="@+id/content" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomBarrierContent" />
 
 
 
