@@ -17,15 +17,10 @@ class PostViewHolder(
             author.text = post.author
             content.text = post.content
             published.text = post.published
-            countViews.text = post.getNumberToString(post.countViews)
-            countLike.text = post.getNumberToString(post.likes)
-            countRepost.text = post.getNumberToString(post.countRepost)
-
-            if (post.likedByMe) {
-                like.setImageResource(R.drawable.ic_heart_liked_24)
-            } else {
-                like.setImageResource(R.drawable.ic_heart_border_24)
-            }
+            viewsContent.text = post.getNumberToString(post.countViews)
+            repost.text = post.getNumberToString(post.countRepost)
+            like.isChecked = post.likedByMe
+            like.text = post.getNumberToString(post.likes)
 
         }
 
