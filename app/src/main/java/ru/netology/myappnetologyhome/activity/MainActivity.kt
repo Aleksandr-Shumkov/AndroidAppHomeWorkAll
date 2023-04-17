@@ -1,10 +1,12 @@
 package ru.netology.myappnetologyhome.activity
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.launch
 import androidx.activity.viewModels
 import ru.netology.myappnetologyhome.R
 import ru.netology.myappnetologyhome.adapter.PostAdapter
@@ -24,6 +26,12 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel: PostViewModel by viewModels()
 
+        val newPostContract = registerForActivityResult(NewPostActivity.Contract) {result ->
+            result ?: return@registerForActivityResult
+            viewModel.changeContent(result)
+            viewModel.save()
+        }
+
         val adapter = PostAdapter (
             object : PostListener{
                 override fun onLike(post: Post) {
@@ -35,10 +43,20 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onEdit(post: Post) {
-                   viewModel.edit(post)
+                    newPostContract.launch(post.content)
+                    viewModel.edit(post)
                 }
 
                 override fun onRepost(post: Post) {
+                    val intent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        putExtra(Intent.EXTRA_TEXT, post.content)
+                        type = "text/plain"
+                    }
+
+                    val startIntent = Intent.createChooser(intent, getString(R.string.description_post_share))
+                    startActivity(startIntent)
+
                     viewModel.repostById(post.id)
                 }
 
@@ -54,76 +72,15 @@ class MainActivity : AppCompatActivity() {
         )
 
         activityMainBinding.create.setOnClickListener {
-            with(activityMainBinding.content) {
-                visibilityControl(activityMainBinding, false)
-                activityMainBinding.content.requestFocus()
-                AndroidUtils.showKeyboard(this)
-            }
-        }
-
-        activityMainBinding.cancelEdit.setOnClickListener {
-            with(activityMainBinding.content) {
-                visibilityControl(activityMainBinding, true)
-                viewModel.cancelEdit()
-                setText("")
-                clearFocus()
-                AndroidUtils.hideKeyboard(this)
-            }
-
-        }
-
-        viewModel.edited.observe(this) {
-
-            if (it.id == 0L) {
-                activityMainBinding.cancelEdit.visibility = View.GONE
-                return@observe
-            }
-
-            visibilityControl(activityMainBinding, false)
-            activityMainBinding.content.requestFocus()
-            activityMainBinding.content.setText(it.content)
-        }
-
-        activityMainBinding.save.setOnClickListener {
-            with(activityMainBinding.content) {
-                val content = text?.toString()
-                if (content.isNullOrBlank()) {
-                    Toast.makeText(
-                        this@MainActivity,
-                        R.string.error_empty_content,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    return@setOnClickListener
-                }
-
-                viewModel.changeContent(content)
-                viewModel.save()
-                visibilityControl(activityMainBinding, true)
-                setText("")
-                clearFocus()
-                AndroidUtils.hideKeyboard(this)
-            }
+            newPostContract.launch("")
         }
 
         viewModel.data.observe(this) { posts ->
-
             adapter.submitList(posts)
-
         }
 
         activityMainBinding.list.adapter = adapter
 
     }
 
-    fun visibilityControl(activityMainBinding: ActivityMainBinding, check: Boolean) {
-
-        if (check) {
-            activityMainBinding.groupEdit.visibility = View.GONE
-            activityMainBinding.create.visibility = View.VISIBLE
-        } else {
-            activityMainBinding.groupEdit.visibility = View.VISIBLE
-            activityMainBinding.create.visibility = View.GONE
-        }
-
-    }
 }

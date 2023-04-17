@@ -8,7 +8,8 @@ data class Post (
     val countViews: Int = 1,
     val countRepost: Int = 0,
     val likedByMe: Boolean = false,
-    val likes: Int = 0
+    val likes: Int = 0,
+    val video: String? = null
 ) {
     fun getNumberToString(number: Int): String {
 
