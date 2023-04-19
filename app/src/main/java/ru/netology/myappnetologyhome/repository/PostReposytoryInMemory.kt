@@ -21,7 +21,8 @@ class PostReposytoryInMemory: PostRepository {
             author = "Нетология. Университет интернет-профессий будущего",
             content = "Делиться впечатлениями о любимых фильмах легко, а что если рассказать так, чтобы все заскучали \uD83D\uDE34\n",
             published = "22 сентября в 10:14",
-            likedByMe = false
+            likedByMe = false,
+            video = "https://www.youtube.com/watch?v=WhWc3b3KhnY"
         ),
         Post(
             id = ++nextId,
@@ -63,7 +64,8 @@ class PostReposytoryInMemory: PostRepository {
             author = "Нетология. Университет интернет-профессий будущего",
             content = "Знаний хватит на всех: на следующей неделе разбираемся с разработкой мобильных приложений, учимся рассказывать истории и составлять PR-стратегию прямо на бесплатных занятиях \uD83D\uDC47",
             published = "18 сентября в 10:12",
-            likedByMe = false
+            likedByMe = false,
+            video = "https://www.youtube.com/watch?v=WhWc3b3KhnY"
         ),
         Post(
             id = ++nextId,

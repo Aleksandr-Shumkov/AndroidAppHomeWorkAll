@@ -6,4 +6,6 @@
     <dimen name="indent_number">8dp</dimen>
     <dimen name="button_text_size">16sp</dimen>
     <dimen name="menu_size">24dp</dimen>
+    <dimen name="marginBottomActivityNewPost">57dp</dimen>
+    <dimen name="play_video_post_icon_size">50dp</dimen>
 </resources>

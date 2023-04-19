@@ -1,5 +1,6 @@
 package ru.netology.myappnetologyhome.adapter
 
+import android.view.View
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.netology.myappnetologyhome.R
@@ -22,6 +23,10 @@ class PostViewHolder(
             like.isChecked = post.likedByMe
             like.text = post.getNumberToString(post.likes)
 
+            videoPost.visibility = if (postVideoVisibility(post) == 0) View.GONE else View.VISIBLE
+            playVideoPost.visibility = if (postVideoVisibility(post) == 0) View.GONE else View.VISIBLE
+
+
         }
 
         binding.like.setOnClickListener {
@@ -30,6 +35,14 @@ class PostViewHolder(
 
         binding.repost.setOnClickListener {
             listener.onRepost(post)
+        }
+
+        binding.videoPost.setOnClickListener {
+            listener.onVideoPost(post)
+        }
+
+        binding.playVideoPost.setOnClickListener {
+            listener.onVideoPost(post)
         }
 
         binding.menu.setOnClickListener {
@@ -57,4 +70,9 @@ class PostViewHolder(
         }
 
     }
+
+    fun postVideoVisibility(post: Post): Int {
+        return if (post.video == null) 0 else 1
+    }
+
 }

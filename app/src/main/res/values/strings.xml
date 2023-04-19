@@ -11,8 +11,7 @@
     <string name="description_post_save">Save</string>
     <string name="description_post_view">View</string>
     <string name="description_post_edit_cancel">Cancel</string>
-
-
+    <string name="description_post_video">Video post</string>
 
     <string name="heart" translatable="false">Heart</string>
     <string name="countLikes" translatable="false">10</string>
@@ -23,4 +22,6 @@
     <string name="menu_edit">Edit</string>
     <string name="error_empty_content">Content can\'t be empty</string>
     <string name="create_post">Create post</string>
+    <string name="openLinkVideo">Choose how to open the video</string>
+    <string name="play_video">Play video</string>
 </resources>

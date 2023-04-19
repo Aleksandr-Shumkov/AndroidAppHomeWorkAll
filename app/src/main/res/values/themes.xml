@@ -14,19 +14,23 @@
         <!-- Customize your theme here. -->
     </style>
     
-    <style name="LikeStyle" parent="Widget.Material3.Button.TextButton">
+    <style name="LikeStyle" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="iconTint">@color/like_button_tint</item>
         <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:textColor">@color/button_text_color</item>
     </style>
 
-    <style name="SecondButtonStyle" parent="Widget.Material3.Button.TextButton">
+    <style name="SecondButtonStyle" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="iconTint">@color/second_button_tint</item>
         <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:textColor">@color/button_text_color</item>
     </style>
+    <style name="PlayVideoPostStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="iconSize">@dimen/play_video_post_icon_size</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
 
-    <style name="PostMenuStyle" parent="Widget.Material3.Button.OutlinedButton">
+    <style name="PostMenuStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="iconTint">@color/second_button_tint</item>
         <item name="iconPadding">0dp</item>
         <item name="android:insetTop">0dp</item>
@@ -35,6 +39,23 @@
         <item name="android:paddingRight">12dp</item>
         <item name="android:minWidth">48dp</item>
         <item name="android:minHeight">48dp</item>
+    </style>
+
+    <style name="fab" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:background">@null</item>
+        <item name="enforceMaterialTheme">true</item>
+        <item name="ensureMinTouchTargetSize">true</item>
+        <item name="elevation">@dimen/mtrl_fab_elevation</item>
+        <item name="backgroundTint">@color/mtrl_fab_bg_color_selector</item>
+        <item name="tint">@color/mtrl_fab_icon_text_color_selector</item>
+        <item name="pressedTranslationZ">@dimen/mtrl_fab_translation_z_pressed</item>
+        <item name="rippleColor">@color/mtrl_fab_ripple_color</item>
+        <item name="showMotionSpec">@animator/mtrl_fab_show_motion_spec</item>
+        <item name="hideMotionSpec">@animator/mtrl_fab_hide_motion_spec</item>
+        <item name="shapeAppearance">?attr/shapeAppearanceSmallComponent</item>
+        <item name="shapeAppearanceOverlay">
+            @style/ShapeAppearanceOverlay.MaterialComponents.FloatingActionButton
+        </item>
     </style>
 
 </resources>
