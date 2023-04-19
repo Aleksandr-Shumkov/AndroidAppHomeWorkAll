@@ -26,6 +26,8 @@ class PostViewHolder(
             videoPost.visibility = if (postVideoVisibility(post) == 0) View.GONE else View.VISIBLE
             playVideoPost.visibility = if (postVideoVisibility(post) == 0) View.GONE else View.VISIBLE
 
+            videoPost.layoutParams?.height = (9 * root.resources.displayMetrics.widthPixels) / 16
+
 
         }
 
