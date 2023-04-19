@@ -2,6 +2,7 @@ package ru.netology.myappnetologyhome.activity
 
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -66,6 +67,13 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onCreate(post: Post) {
                     viewModel.createPost(post)
+                }
+
+                override fun onVideoPost(post: Post) {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
+
+                    val startIntent = Intent.createChooser(intent, getString(R.string.openLinkVideo))
+                    startActivity(startIntent)
                 }
 
             }

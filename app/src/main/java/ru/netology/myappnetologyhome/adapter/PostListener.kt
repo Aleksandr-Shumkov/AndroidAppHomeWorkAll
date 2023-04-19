@@ -11,4 +11,6 @@ interface PostListener {
     fun onCancel()
     fun onCreate(post: Post)
 
+    fun onVideoPost(post: Post)
+
 }
