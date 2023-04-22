@@ -1,5 +1,6 @@
 package ru.netology.myappnetologyhome.activity
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.net.Uri
@@ -21,6 +22,12 @@ import ru.netology.myappnetologyhome.viewmodel.PostViewModel
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val prefs = getSharedPreferences("posts", Context.MODE_PRIVATE)
+        prefs.edit().apply {
+            putString("key", "value1")
+            apply()
+        }
 
         val activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(activityMainBinding.root)

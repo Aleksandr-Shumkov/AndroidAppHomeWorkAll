@@ -76,7 +76,7 @@
         android:id="@+id/videoPost"
         android:contentDescription="@string/description_post_video"
         android:layout_width="match_parent"
-        android:layout_height="206dp"
+        android:layout_height="match_parent"
         app:layout_constraintTop_toBottomOf="@+id/content"
         android:src="@drawable/kosmo"/>
 
