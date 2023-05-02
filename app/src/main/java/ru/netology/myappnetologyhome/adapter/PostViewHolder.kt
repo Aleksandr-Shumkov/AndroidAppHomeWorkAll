@@ -1,5 +1,6 @@
 package ru.netology.myappnetologyhome.adapter
 
+import android.provider.MediaStore.Video
 import android.view.View
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -7,7 +8,7 @@ import ru.netology.myappnetologyhome.R
 import ru.netology.myappnetologyhome.databinding.CardPostBinding
 import ru.netology.myappnetologyhome.dto.Post
 
-class PostViewHolder(
+class PostViewHolder (
     private val binding: CardPostBinding,
     private val listener: PostListener
 ) : ViewHolder(binding.root) {
@@ -23,8 +24,8 @@ class PostViewHolder(
             like.isChecked = post.likedByMe
             like.text = post.getNumberToString(post.likes)
 
-            videoPost.visibility = if (postVideoVisibility(post) == 0) View.GONE else View.VISIBLE
-            playVideoPost.visibility = if (postVideoVisibility(post) == 0) View.GONE else View.VISIBLE
+            videoPost.visibility = if (post.postVideoVisibility(post.video) == 0) View.GONE else View.VISIBLE
+            playVideoPost.visibility = if (post.postVideoVisibility(post.video) == 0) View.GONE else View.VISIBLE
 
             videoPost.layoutParams?.height = (9 * root.resources.displayMetrics.widthPixels) / 16
 
@@ -45,6 +46,10 @@ class PostViewHolder(
 
         binding.playVideoPost.setOnClickListener {
             listener.onVideoPost(post)
+        }
+
+        binding.root.setOnClickListener {
+            listener.onDetailsClicked(post)
         }
 
         binding.menu.setOnClickListener {
@@ -71,10 +76,6 @@ class PostViewHolder(
             }.show()
         }
 
-    }
-
-    fun postVideoVisibility(post: Post): Int {
-        return if (post.video == null) 0 else 1
     }
 
 }

@@ -25,4 +25,8 @@ data class Post (
 
     }
 
+    fun postVideoVisibility(video: String?): Int {
+        return if (video == null) 0 else 1
+    }
+
 }
