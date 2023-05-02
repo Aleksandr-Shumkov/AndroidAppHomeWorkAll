@@ -16,9 +16,6 @@
             android:name=".activity.NewPostFragment"
             android:exported="false" />
         <activity
-            android:name=".activity.PostDetailsFragment"
-            android:exported="false" />
-        <activity
             android:name=".activity.AppActivity"
             android:exported="true">
             <intent-filter>
