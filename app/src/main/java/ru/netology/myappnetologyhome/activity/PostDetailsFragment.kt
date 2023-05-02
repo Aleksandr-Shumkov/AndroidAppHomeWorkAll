@@ -89,11 +89,7 @@ class PostDetailsFragment : Fragment() {
                                 }
 
                                 override fun onDetailsClicked(post: Post) {
-                                    findNavController().navigate(R.id.action_feedFragment_to_PostDetailsFragment,
-                                        Bundle().apply {
-                                            postId = post.id.toString()
-                                        }
-                                    )
+
                                 }
 
                             }
