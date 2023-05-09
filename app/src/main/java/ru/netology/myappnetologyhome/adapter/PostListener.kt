@@ -10,7 +10,7 @@ interface PostListener {
     fun onRepost(post: Post)
     fun onCancel()
     fun onCreate(post: Post)
-
     fun onVideoPost(post: Post)
+    fun onDetailsClicked(post: Post)
 
 }

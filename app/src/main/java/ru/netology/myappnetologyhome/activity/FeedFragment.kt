@@ -1,46 +1,39 @@
 package ru.netology.myappnetologyhome.activity
 
-import android.content.Context
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
-import androidx.activity.result.launch
-import androidx.activity.viewModels
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import ru.netology.myappnetologyhome.R
+import ru.netology.myappnetologyhome.activity.NewPostFragment.Companion.textArg
+import ru.netology.myappnetologyhome.activity.PostDetailsFragment.Companion.postId
 import ru.netology.myappnetologyhome.adapter.PostAdapter
 import ru.netology.myappnetologyhome.adapter.PostListener
-import ru.netology.myappnetologyhome.databinding.ActivityMainBinding
-import ru.netology.myappnetologyhome.databinding.CardPostBinding
+import ru.netology.myappnetologyhome.databinding.FragmentFeedBinding
 import ru.netology.myappnetologyhome.dto.Post
-import ru.netology.myappnetologyhome.utils.AndroidUtils
 import ru.netology.myappnetologyhome.viewmodel.PostViewModel
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+class FeedFragment : Fragment() {
+
+    private val viewModel: PostViewModel by activityViewModels()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+
         super.onCreate(savedInstanceState)
 
-        val prefs = getSharedPreferences("posts", Context.MODE_PRIVATE)
-        prefs.edit().apply {
-            putString("key", "value1")
-            apply()
-        }
-
-        val activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(activityMainBinding.root)
-
-        val viewModel: PostViewModel by viewModels()
-
-        val newPostContract = registerForActivityResult(NewPostActivity.Contract) {result ->
-            result ?: return@registerForActivityResult
-            viewModel.changeContent(result)
-            viewModel.save()
-        }
+        val activityMainBinding = FragmentFeedBinding.inflate(layoutInflater)
 
         val adapter = PostAdapter (
+
             object : PostListener{
                 override fun onLike(post: Post) {
                     viewModel.likeById(post.id)
@@ -51,7 +44,11 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onEdit(post: Post) {
-                    newPostContract.launch(post.content)
+                    findNavController().navigate(R.id.action_feedFragment_to_newPostFragment,
+                        Bundle().apply {
+                            textArg = post.content
+                        }
+                    )
                     viewModel.edit(post)
                 }
 
@@ -83,19 +80,35 @@ class MainActivity : AppCompatActivity() {
                     startActivity(startIntent)
                 }
 
+                override fun onDetailsClicked(post: Post) {
+                    findNavController().navigate(R.id.action_feedFragment_to_PostDetailsFragment,
+                        Bundle().apply {
+                            postId = post.id.toString()
+                        }
+                    )
+                }
+
             }
         )
 
         activityMainBinding.create.setOnClickListener {
-            newPostContract.launch("")
+            findNavController().navigate(R.id.action_feedFragment_to_newPostFragment)
         }
 
-        viewModel.data.observe(this) { posts ->
+        viewModel.data.observe(viewLifecycleOwner) { posts ->
             adapter.submitList(posts)
         }
 
         activityMainBinding.list.adapter = adapter
 
+        return activityMainBinding.root
+    }
+
+
+
+    override fun onResume() {
+        viewModel.cancelEdit()
+        super.onResume()
     }
 
 }

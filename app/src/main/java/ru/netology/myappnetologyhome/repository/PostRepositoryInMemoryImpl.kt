@@ -46,7 +46,9 @@ class PostRepositoryInMemoryImpl(
 
     override fun getData(): LiveData<List<Post>> = data
 
-    override fun viewPostById(id: Long){}
+    override fun viewPostById(id: Long){
+
+    }
 
     override fun removePostById(id: Long) {
 
