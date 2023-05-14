@@ -17,5 +17,10 @@ interface PostRepository {
 
     fun save(post: Post)
 
+    fun saveDraft(text: String)
+
+    fun getDraft(): String
+
+    fun clearDraft()
 
 }

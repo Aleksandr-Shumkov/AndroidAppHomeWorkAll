@@ -15,6 +15,7 @@ import ru.netology.myappnetologyhome.activity.PostDetailsFragment.Companion.post
 import ru.netology.myappnetologyhome.adapter.PostAdapter
 import ru.netology.myappnetologyhome.adapter.PostListener
 import ru.netology.myappnetologyhome.databinding.FragmentFeedBinding
+import ru.netology.myappnetologyhome.databinding.FragmentNewPostBinding
 import ru.netology.myappnetologyhome.dto.Post
 import ru.netology.myappnetologyhome.viewmodel.PostViewModel
 
@@ -28,8 +29,8 @@ class FeedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        super.onCreate(savedInstanceState)
 
+        super.onCreate(savedInstanceState)
         val activityMainBinding = FragmentFeedBinding.inflate(layoutInflater)
 
         val adapter = PostAdapter (
@@ -104,11 +105,9 @@ class FeedFragment : Fragment() {
         return activityMainBinding.root
     }
 
-
-
     override fun onResume() {
-        viewModel.cancelEdit()
         super.onResume()
+        viewModel.cancelEdit()
     }
 
 }
