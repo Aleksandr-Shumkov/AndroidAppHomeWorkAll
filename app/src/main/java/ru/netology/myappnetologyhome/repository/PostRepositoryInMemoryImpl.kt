@@ -86,6 +86,18 @@ class PostRepositoryInMemoryImpl(
 
     }
 
+    override fun saveDraft(text: String) {
+
+    }
+
+    override fun getDraft(): String {
+        return ""
+    }
+
+    override fun clearDraft() {
+
+    }
+
     override fun repostById(id: Long) {
 
         posts = posts.map { post ->

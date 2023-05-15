@@ -1,6 +1,5 @@
 package ru.netology.myappnetologyhome.adapter
 
-import android.provider.MediaStore.Video
 import android.view.View
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
