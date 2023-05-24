@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.kapt'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -10,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "ru.netology.nmedia"
-        minSdk 27
+        minSdk 32
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -43,6 +44,8 @@ dependencies {
     def fragment_version = "1.5.7"
     def nav_version = "2.5.3"
     def room_ver = "2.5.1"
+    def firebase_version = "32.0.0"
+    def play_serv_base_version = "18.2.0"
 
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
@@ -58,6 +61,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.room:room-runtime:$room_ver"
     kapt "androidx.room:room-compiler:$room_ver"
+    implementation platform("com.google.firebase:firebase-bom:$firebase_version")
+    implementation "com.google.firebase:firebase-messaging-ktx:23.1.2"
+    implementation "com.google.android.gms:play-services-base:$play_serv_base_version"
+
 
     testImplementation 'junit:junit:4.13.2'
 
