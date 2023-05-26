@@ -72,6 +72,7 @@ class FCMService : FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         println(token)
     }
+    
 
     private fun handleLike(content: Like) {
         val notification = NotificationCompat.Builder(this, channelId)
