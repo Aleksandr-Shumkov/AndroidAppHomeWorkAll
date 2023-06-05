@@ -24,4 +24,9 @@
     <string name="create_post">Create post</string>
     <string name="openLinkVideo">Choose how to open the video</string>
     <string name="play_video">Play video</string>
+    <string name="google_play_unavailable">Google API Not Available</string>
+    <string name="notification_user_liked">%1$s liked the post %2$s</string>
+    <string name="notification_new_post">%1$s posted a new post:</string>
+    <string name="channel_remote_name">Server notifications</string>
+    <string name="channel_remote_description">Notifications from a remote server</string>
 </resources>
