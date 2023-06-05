@@ -41,28 +41,27 @@ class FCMService : FirebaseMessagingService() {
 
     override fun onMessageReceived(message: RemoteMessage) {
 
-        if(message.data.containsKey("action")) {
+        if (message.data.containsKey("action")) {
             message.data[action]?.let {
 
-                val actionFind = actionVal.filter {act ->
+                val actionFind = actionVal.find { act ->
                     act.name == it
                 }
 
-                if (actionFind.size == 1) {
-                    when (actionFind[0].name) {
-                        "LIKE" -> {
-                            handleLike(gson.fromJson(message.data[content], Like::class.java))
-                        }
-                        "NEW_POST" -> {
-                            handleNewPost(gson.fromJson(message.data[content], NewPost::class.java))
-                        }
-                        else -> {
-                            //пока пусто
-                        }
+                when (actionFind) {
+                    Action.LIKE -> {
+                        handleLike(gson.fromJson(message.data[content], Like::class.java))
                     }
-                } else {
-                    //пока пусто
+
+                    Action.NEW_POST -> {
+                        handleNewPost(gson.fromJson(message.data[content], NewPost::class.java))
+                    }
+
+                    else -> {
+                        //пока пусто
+                    }
                 }
+
             }
         } else {
             //пока пусто
@@ -72,7 +71,7 @@ class FCMService : FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         println(token)
     }
-    
+
 
     private fun handleLike(content: Like) {
         val notification = NotificationCompat.Builder(this, channelId)
@@ -102,8 +101,10 @@ class FCMService : FirebaseMessagingService() {
                 )
             )
             .setContentText(content.postContent)
-            .setStyle(NotificationCompat.BigTextStyle().bigText(content.postContent.substring(0, 57) + "..."))
-            //.setStyle(NotificationCompat.BigTextStyle().bigText(content.postContent))
+            .setStyle(
+                NotificationCompat.BigTextStyle()
+                    .bigText(content.postContent.take(57) + "...")
+            )
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .build()
 
